@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métodos de Pago</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 8px;
+        }
+
+        .metodo-pago-campos {
+            display: none;
+            margin-top: 16px;
+        }
+    </style>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Seleccione un Método de Pago</h2>
+
+    <label for="metodoPago">Método de Pago</label>
+    <select id="metodoPago" onchange="mostrarCampos()">
+        <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+        <option value="paypal">PayPal</option>
+    </select>
+
+    <div class="metodo-pago-campos" id="camposTarjeta">
+        <label for="numeroTarjeta">Número de Tarjeta</label>
+        <input type="text" id="numeroTarjeta" placeholder="Número de Tarjeta">
+        <label for="fechaExpiracion">Fecha de Expiración</label>
+        <input type="text" id="fechaExpiracion" placeholder="MM/AA">
+        <label for="codigoSeguridad">Código de Seguridad</label>
+        <input type="text" id="codigoSeguridad" placeholder="CVC">
+    </div>
+
+    <div class="metodo-pago-campos" id="camposPayPal">
+        <label for="correoPayPal">Correo electrónico PayPal</label>
+        <input type="text" id="correoPayPal" placeholder="Correo electrónico PayPal">
+    
+        <label for="codigoPostalPayPal">Código Postal</label>
+        <input type="text" id="codigoPostalPayPal" placeholder="Código Postal">
+    </div>
+
+    <button onclick="realizarPago()">Realizar Pago</button>
+    <button onclick="generarImagen()">Imprimir Datos de la Compra</button>
+</div>
+
+<script>
+    function mostrarCampos() {
+        const metodoPago = document.getElementById('metodoPago').value;
+        document.getElementById('camposTarjeta').style.display = metodoPago === 'tarjeta' ? 'block' : 'none';
+        document.getElementById('camposPayPal').style.display = metodoPago === 'paypal' ? 'block' : 'none';
+    }
+
+    function realizarPago() {
+        const metodoPago = document.getElementById('metodoPago').value;
+        const infoCompra = {
+            metodoPago: metodoPago,
+            numeroTarjeta: document.getElementById('numeroTarjeta').value,
+            fechaExpiracion: document.getElementById('fechaExpiracion').value,
+            codigoSeguridad: document.getElementById('codigoSeguridad').value,
+            correoPayPal: document.getElementById('correoPayPal').value,
+            codigoPostalPayPal: document.getElementById('codigoPostalPayPal').value
+        };
+
+        // Guardar la información en el almacenamiento local
+        localStorage.setItem('infoCompra', JSON.stringify(infoCompra));
+
+        alert('¡Pago realizado con éxito! (Esto es solo un ejemplo, no realiza transacciones reales)');
+    }
+
+    function generarImagen() {
+        const container = document.querySelector('.container');
+        
+        html2canvas(container).then(canvas => {
+            const imageData = canvas.toDataURL('image/png');
+
+            // Descargar la imagen
+            const a = document.createElement('a');
+            a.href = imageData;
+            a.download = 'infoCompra.png';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+    }
+</script>
+
+</body>
+</html>
+

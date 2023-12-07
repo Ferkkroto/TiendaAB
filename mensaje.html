@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensajes</title>
+    <link rel="stylesheet" href="estilosmensaje.css">
+    <!-- Agrega tus estilos CSS aquí si es necesario -->
+</head>
+<body>
+
+<div id="mensaje-container">
+    <div id="mensaje">
+        <p id="mensaje-texto">Para agregar este producto al carrito, primero debes iniciar sesión.</p>
+        <button id="aceptar">Aceptar</button>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const btnAceptar = document.getElementById('aceptar');
+
+        btnAceptar.addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+    });
+</script>
+
+
+</body>
+</html>
+

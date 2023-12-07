@@ -1,0 +1,92 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('../Imagenes/Iniciosesion.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #9a7b7b;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+}
+
+h2 {
+    color: #542801;
+    text-align: center;
+}
+
+/* Estilos del formulario */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+input {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #542801;
+    color: #fff;
+    padding: 10px;
+    width: 50%;
+    margin: 0 auto; 
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+button:hover {
+    background-color: #7b3c04;
+}
+
+/* Estilos del enlace de contraseña olvidada */
+p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+a {
+    color: #040f68;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #093961;
+}
+.regresar-link {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 16px;
+    text-decoration: none;
+    color: #333; /* Puedes ajustar el color según tu paleta */
+    background-color: #fff; /* Puedes ajustar el color del fondo según tu paleta */
+    padding: 8px 12px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.regresar-link:hover {
+    background-color: #eee; /* Puedes ajustar el color del fondo al pasar el mouse */
+}
+

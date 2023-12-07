@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Estilos2/styles.css">
+    <title>Registro</title>
+</head>
+
+<body>
+    <div class="container">
+        <form id="registrationForm">
+            <h2>Registro</h2>
+            <label for="username">Nombre de usuario:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="button" id="signUp">Registrarse</button>
+            <p>¿Ya tienes cuenta? <a href="InicioSesion.html">Iniciar sesión</a> </p>
+        </form>
+
+        <!-- Contenedor para mensajes -->
+        <div class="messages-container"></div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+// Resto de tu código...
+
+        
+        const firebaseConfig = {
+            apiKey: "AIzaSyB6FtxWTjxAWawNWzFW6ZBLTpqB0o8FoI8",
+            authDomain: "tiendaf-e1c20.firebaseapp.com",
+            projectId: "tiendaf-e1c20",
+            storageBucket: "tiendaf-e1c20.appspot.com",
+            messagingSenderId: "304487005920",
+            appId: "1:304487005920:web:6efe4e9884315f11945a85"
+          };
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        const signUpButton = document.getElementById('signUp');
+        const messagesContainer = document.querySelector('.messages-container');
+        const usernameField = document.getElementById('username');
+        const emailField = document.getElementById('email');
+        const passwordField = document.getElementById('password');
+
+        signUpButton.addEventListener('click', () => {
+            const email = emailField.value;
+            const password = passwordField.value;
+            const username = usernameField.value;
+
+            // Crear usuario en Firebase Authentication
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Usuario creado con éxito
+                    const userId = userCredential.user.uid;
+
+                    // Guardar el nombre y correo en Firestore
+                    saveUserDetailsToFirestore(userId, username, email);
+
+                    showSuccessMessage('Usuario creado exitosamente! Ahora puedes iniciar sesión.');
+                    resetFields();
+                    window.location.href = 'InicioSesion.html';
+                })
+                .catch((error) => {
+                    // Error al crear usuario
+                    const errorMessage = error.message;
+                    showErrorMessage('Error al crear usuario: ' + errorMessage);
+                });
+        });
+
+        async function saveUserDetailsToFirestore(userId, username, email) {
+            try {
+                // Crear referencia al documento del usuario en la colección "usuarios"
+                const userRef = doc(db, 'usuarios', userId);
+
+                // Establecer los campos "Nombre" y "Correo" del documento
+                await setDoc(userRef, { Nombre: username, Correo: email });
+
+                // Registro de consola para verificar los valores que se están guardando
+                console.log('Nombre y correo guardados en Firestore:', username, email);
+            } catch (error) {
+                console.error('Error al guardar el nombre y correo en Firestore:', error);
+            }
+        }
+
+        function showSuccessMessage(message) {
+            const successAlert = createMessage('success', message);
+            messagesContainer.innerHTML = '';
+            messagesContainer.appendChild(successAlert);
+        }
+
+        function showErrorMessage(message) {
+            const errorAlert = createMessage('error', message);
+            messagesContainer.innerHTML = '';
+            messagesContainer.appendChild(errorAlert);
+        }
+
+        function createMessage(type, message) {
+            const alert = document.createElement('div');
+            alert.style.padding = '10px';
+            alert.style.borderRadius = '4px';
+            alert.style.textAlign = 'center';
+
+            const colors = {
+                success: { backgroundColor: '#2E7D32', color: '#fff' },
+                error: { backgroundColor: '#FFCDD2', color: '#D32F2F' },
+            };
+
+            alert.style.backgroundColor = colors[type].backgroundColor;
+            alert.style.color = colors[type].color;
+            alert.innerText = message;
+
+            return alert;
+        }
+
+        function resetFields() {
+            // Restablecer los campos del formulario
+            usernameField.value = '';
+            emailField.value = '';
+            passwordField.value = '';
+        }
+    </script>
+</body>
+
+</html>

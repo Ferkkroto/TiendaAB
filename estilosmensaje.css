@@ -1,0 +1,51 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f8f8f8;
+}
+
+#mensaje-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#mensaje {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+    max-width: 400px; /* Ancho máximo para evitar que el contenido sea demasiado ancho en pantallas grandes */
+    width: 100%; /* Para que el contenedor se ajuste al ancho máximo en pantallas pequeñas */
+}
+
+#mensaje-texto {
+    margin-bottom: 20px;
+}
+
+#aceptar,
+#cancelar {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+#cancelar {
+    background-color: #d33;
+}
+
+/* Reglas de medios para hacer responsivo */
+@media screen and (max-width: 600px) {
+    #mensaje {
+        padding: 10px; /* Ajusta según sea necesario para tamaños de pantalla pequeños */
+    }
+}

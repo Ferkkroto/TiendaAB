@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compra</title>
+
+    <!-- Estilos -->
+    <link href="style.css" rel="stylesheet" type="text/css">
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header id="header">
+        <div class="title-and-icons">
+            <h1>Mi tienda</h1>
+            <div class="icono">
+                <img id="carrito" class="carrito" src="Imagenes/carritocompras.png" alt="Icono de la tienda">
+                <div id="numero"></div>
+            </div>
+        </div>
+        <div class="navigation">
+            <div class="ingresar">
+                <a href="InicioSesion.html">Ingresa</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div id="contenedor" class="contenedor"></div>
+    </main>
+
+    <div id="contenedorCompra">
+        <div class="informacionCompra" id="informacionCompra">
+            <h2>Cesta</h2>
+            <p class="x" id="x">x</p>
+        </div>
+
+        <div class="productosCompra" id="productosCompra"></div>
+        <div class="total" id="total"></div>
+        <button id="comprarButton">Comprar</button>
+    </div>
+
+    <!-- Scripts al final del cuerpo del documento -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

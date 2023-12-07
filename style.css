@@ -1,0 +1,420 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #F2E8DA;
+    padding-top: 130px;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    margin: 30px 0;
+}
+
+img {
+    width: 100%;
+    height: 180px; /* Ajusta según sea necesario */
+    object-fit: cover;
+    max-width: 200px; /* Ajusta según sea necesario */
+    padding: 5px 10px;
+    border-radius: 20px 20px 0 0;
+    
+}
+
+
+header {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    background-color: #8B4513;
+    height: 90px;
+    top: 0;
+    width: 100%;
+    padding: 10px;
+    gap: 5%;
+}
+
+.scroll {
+    background-color: #8B4513;
+    box-shadow: 0.1rem 0.2rem 0.3rem #333;
+}
+
+.scroll img {
+    filter: invert(15%);
+}
+
+.scroll h1 {
+    color: #000000;
+}
+
+.icono {
+    position: fixed;
+    right: 20px;
+    top: 0;
+}
+
+.crear-cuenta, .ingresar {
+    position: fixed;
+}
+
+.crear-cuenta, .ingresar a {
+    text-decoration: none;
+    color: #0e1014;
+}
+
+
+.crear-cuenta a:hover, .ingresar a:hover {
+    color: #010001;
+    font-weight: bold;
+}
+
+.carrito {
+    filter: invert(100%);
+    width: 70px;
+    height: auto;
+    position: relative;
+    top: 14px;
+    right: 0;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para el contenedor de productos */
+/* Estilos para el contenedor de productos */
+.contenedor > div {
+    background-color: #D2B48C;
+    border-radius: 5px;
+    margin-top: 20px;
+    width: calc(33.33% - 20px);
+    box-sizing: border-box;
+    display: flex; /* Convertir el contenedor en un flex container */
+    flex-direction: column; /* Apilar los elementos internos verticalmente */
+    align-items: center; /* Centrar los elementos internos horizontalmente */
+    padding: 10px; /* Añadir relleno para espacio adicional alrededor de las imágenes */
+}
+
+/* Reglas de medios para hacer responsivo */
+@media screen and (max-width: 900px) {
+    .contenedor > div {
+        width: calc(50% - 20px); /* Ajusta el ancho para 2 columnas con un margen de 20px entre ellas */
+    }
+}
+
+
+
+.contenedor>div:hover {
+    background-color: #B8860B;
+}
+
+.informacion {
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.informacion>p:first-child {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    font-weight: 300;
+}
+
+.informacion .precio {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.informacion .precio span {
+    font-size: 17px;
+    font-weight: 300;
+}
+
+.informacion button {
+    background-color: #263143;
+    width: 100px;
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    font-size: 17px;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+.informacion button:hover {
+    background-color: #2D4263;
+}
+
+.diseñoNumero {
+    padding: 10px;
+    background-color: red;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    position: relative;
+    top: -12px;
+    left: 30px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedorCompra{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top:0px;
+    background-color: rgba(51, 51, 51, 0.6);
+    flex-direction:column;
+    gap:35px;
+}
+
+.informacionCompra{
+    width: 500px;
+    height: 500px;
+    background-color: #8B4513;
+    border-radius: 25px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: fixed;
+}
+
+.informacionCompra h2{
+    font-weight: 300;
+    margin: 50px 0px 0px 50px;
+    font-size: 32px;
+    width: 100%;
+}
+
+.x{
+    padding-top: 30px;
+    padding-right: 30px;
+    cursor: pointer;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+}
+
+.productosCompra{
+    font-size: 17px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 450px;
+    height: 30%;
+    overflow-y: auto;
+    margin-top: 50px;
+}
+
+.productosCompra > div {
+    margin: 0px 45px;
+    padding: 20px 0px;
+    width: auto;
+    border-bottom: 1px dotted black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.productosCompra::-webkit-scrollbar{
+    width: 7px;
+    background-color: #141C29;
+    border-radius: 5px;
+}
+
+.productosCompra::-webkit-scrollbar-thumb{
+    background: white ;
+    border-radius: 3px;
+}
+
+.img{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.productosCompra img{
+    width: 45px;
+    height: auto;
+    margin-right:10px;
+    border-radius: 50%;
+    border-bottom: none ;
+    cursor: pointer;
+}
+
+.total{
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 150px;
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.total span{
+    font-weight: 300;
+}
+
+.contenedorCompra > button{
+    z-index: 1;
+    background-color: #263143;
+    width: 300px;
+    height: 45px;
+    border-radius: 10px ;
+    border: none;
+
+    font-size: 17px;
+    font-weight: 300;
+}
+
+.contenedorCompra > button:hover{
+    background-color: rgb(199, 180, 180);
+    color: black;
+}
+
+.none>div,
+.none button, 
+.none p{
+    width: 0px;
+    height: 0px;
+    font-size: 0px;
+    border: 0px;
+}
+
+.agotado{
+    background-color: rgb(188, 10, 10);
+    padding: 7px 10px;
+    border-radius: 10px;
+}
+.botonEliminar{
+    background-color: rgba(0, 0, 0, 0);
+    border:none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+/* estilos.css */
+
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    
+  }
+  
+  .modal-content {
+    background-color: #968484;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #000;
+    max-width: 700px;
+  }
+  
+  .input-cuenta {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    color: #000000;
+  }
+  
+  .boton {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .boton-rojo {
+    background-color: #a80b0b;
+  }
+
+/* Estilo para el botón de Pagar con Tarjeta */
+.btn-tarjeta {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Estilo para el botón de Pagar con PayPal */
+.btn-paypal {
+    background-color: #f3f3f3;
+    color: #000000;
+}
+
+.h2 {
+    color: #000000;
+}
+
+.ventana-emergente p {
+    margin-bottom: 20px;
+}
+
+.ventana-emergente button {
+    margin-right: 10px;
+}
+
+/* Estilos personalizados para la ventana emergente de SweetAlert2 */
+.swal-popup {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.swal-confirm-button {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.swal-cancel-button {
+    background-color: #d33;
+    color: #fff;
+}
+@media screen and (max-width: 600px) {
+    /* Estilos para pantallas pequeñas */
+    .title-and-icons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navigation {
+        margin-top: 20px; /* Ajusta el margen según sea necesario */
+    }
+}
+.crear-cuenta,
+.ingresar {
+    position: relative;
+    right: 0; /* Ajusta según sea necesario */
+    margin-top: 10px; /* Ajusta según sea necesario */
+}
